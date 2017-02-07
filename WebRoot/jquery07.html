@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery 删除节点</title>
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script>
+	
+    	$(function(){//==window.onload=function(){}
+    		var $f1 = $("#f1").clone(true);
+    		var $f2 =$("#f2").replaceWith($f1);
+    		alert(0);
+    		$("#f1").replaceWith($f2);
+    		
+    		
+    		$("li").wrap("<font color='red'></font>");
+    		$("li").wrapAll("<font color='red'></font>");
+    	});
+    	
+    	
+    	
+    </script>
+  </head>
+  <body>
+	  	<ul id="game">
+	  		<li id="f1">极品飞车1</li>
+	  		<li>极品飞车2</li>
+	  		<li>极品飞车3</li>
+	  		<li>极品飞车4</li>
+	  		<li id="f2">极品飞车5</li>
+	  	</ul>
+  </body>
+</html>

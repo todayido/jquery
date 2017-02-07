@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery 删除节点</title>
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script>
+	
+    	$(function(){//==window.onload=function(){}
+    		$("#game li").click(function(){
+    			$(this).remove();
+    			alert($("#game li").length);
+    		});
+    		
+    		$("#game").empty();
+    		alert($("#game li").length); // 0
+    		
+    		$(":button").click(function(){
+    			$(this).clone(true).insertAfter($(this));
+    		});
+    	});
+    	
+    	
+    	
+    </script>
+  </head>
+  <body>
+	  	<ul id="game">
+	  		<li>极品飞车1</li>
+	  		<li>极品飞车2</li>
+	  		<li>极品飞车3</li>
+	  		<li>极品飞车4</li>
+	  		<li>极品飞车5</li>
+	  	</ul>
+	  	<input type="button"  name="btn" value="ClickMe" />
+  </body>
+</html>

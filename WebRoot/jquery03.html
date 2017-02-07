@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery选择器</title>
+    <!-- 导入 jQuery 库 -->
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script>
+    	$(function(){
+    		$("#btn1").click(function(){
+				//alert('btn1');
+				$("body div").css("background","#ffAAbb");// body 所有的 div
+    		});
+    		
+    		$("#btn2").click(function(){
+				$("body > div").css("background","#ffAAbb");// 子元素，body 内所有的子 div
+    		});
+    		
+    		$("#btn3").click(function(){
+				$("#one + div").css("background","#ffAAbb");// 兄弟元素，id=one 的下一个 div
+    		});
+    		
+    		$("#btn4").click(function(){
+				$("#two ~ div").css("background","#ffAAbb");// 兄弟，id=two 的后面所有的 div
+    		});
+    		
+    		$("#btn5").click(function(){
+				$("#two").siblings("div").css("background","#ffAAbb");// 兄弟，前后所有的 div
+    		});
+    		
+    		$("#btn6").click(function(){
+    			// id=two 的下一个 span
+    			// 以下选择器为紧邻 #one 的 span 元素，若该元素和 #one 不相邻，选择器无效
+    			// $("body > span").css("background","#ffAAbb");
+    			// $("#two").next("span").first().css("background","#ffAAbb");//next:id=two 的下一个 span,nextAll后面所有的
+    			
+				$("#two").nextAll("span").first().css("background","#ffAAbb");
+				//或者 $("#two").nextAll("span:fisrt").css("background","#ffAAbb");
+    		});
+    		
+    		$("#btn7").click(function(){
+				$("#three").prevAll("div").css("background","#ffAAbb");//id=two 的前面所有的 div
+				$("#three").prev("div").css("background","#ffAAbb");//id=two 的前面第一个所有的 div
+    		});
+    	});
+    </script>
+    <style type="text/css">
+    	.large{
+    		display:inline-block;
+    		float:left;
+    		margin:20px;
+    		width:100px;
+    		height:120px;
+    		border:solid 1px #ccc;
+    		background:#DEDEDE;
+    	}
+    	.mini{
+    		display:inline-block;
+    		margin:10px;
+    		width:80px;
+    		height:50px;
+    		border:solid 1px #ccc;
+    		background:#DEDEDE;
+    	}
+    </style>
+  </head>
+  <body>
+  	<button id="btn1">body 所有的 div</button>
+  	<button id="btn2">body 内所有的子 div</button>
+  	<button id="btn3">id=one 的下一个 div</button>
+  	<button id="btn4">id=two 的后面所有的 div</button>
+  	<button id="btn5">id=two 的前后所有的 div</button>
+  	<button id="btn6">id=two 的下一个 span</button>
+  	<button id="btn7">id=three 的前面所有的 div</button>
+  	<br>
+  	<div id="one" class="large">
+  		div
+  		id=one
+  		class=large
+  		<div class="mini">class=mini</div>
+  	</div>
+  	<div id="two" class="large">
+  		div
+  		id=two
+  		class=large
+  		<div class="mini">class=mini</div>
+  	</div>
+  	<div id="three" class="large">
+  		div
+  		id=three
+  		class=large
+  		<div class="mini">class=mini</div>
+  	</div>
+  	<div id="four" class="large">
+  		div
+  		id=four
+  		class=large
+  		<div class="mini">class=mini</div>
+  	</div>
+  	<span class="large">span</span>
+  	<span class="large">span</span>
+  </body>
+</html>

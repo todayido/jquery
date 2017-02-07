@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery 删除节点</title>
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script>
+    	$(function(){//==window.onload=function(){}
+    		var username = "请输入用户名";
+    		$(":text").focus(function(){
+    			if($(this).val() == username){
+    				$(this).val("");
+    			}
+    		}).blur(function(){
+    			if($.trim($(this).val()) == ""){
+    				$(this).val(username);
+    			}
+    		});
+    		//下拉赋值
+    		$(":button:eq(0)").click(function(){
+				$("#select").val("3");    			
+    		});
+    		
+    		//checknox赋值
+    		$(":button:eq(1)").click(function(){
+				$(":checkbox").val(['2','4']);    			
+    		});
+    		
+    		//radio赋值用数组，单个不起作用
+    		$(":button:eq(2)").click(function(){
+				$(":radio").val(['2']);    			
+    		});
+    		
+    		//多选下拉框赋值
+    		$(":button:eq(3)").click(function(){
+				$("#select2").val(['2','3']);    			
+    		});
+    		
+    		$(":button:eq(4)").click(function(){
+				alert($("#select").val());
+				alert($("#select2").val());
+				//value可以直接获取select被选中的值，但是val不能直接获取checkbox被选中的值
+				//如果直接获取只能得到第一个被选择的值，$("input[name='checkboxName']:checked")得到的是一个数字，
+				//用val只能获取第一个值，如果要取值，需使用each 遍历
+				alert($("input[name='checkboxName']:checked").each(function(){
+					alert(this.value);
+				}));
+				//radio只有一个值，所有可以使用val
+				alert($("input[name='radioName']:checked").val());
+    		});
+    		
+    		
+    	
+    	});
+    </script>
+  </head>
+  <body>
+  	<input id="username" name="username" type="text" value="请输入用户名">
+  	<input type="button" value="下拉框3被选中">
+  	<input type="button" value="多选2,4被选中">
+  	<input type="button" value="单选2被选中">
+  	<input type="button" value="多选下拉框2,3被选中">
+  	<input type="button" value="获取选中">
+  	<br />
+  	<select id="select">
+  		<option value="1">1-1</option>
+  		<option value="2">2-2</option>
+  		<option value="3">3-3</option>
+  		<option value="4">4-4</option>
+  	</select>
+  	<br />
+  	<select id="select2" multiple="true">
+  		<option value="1" selected="selected">1-1</option>
+  		<option value="2">2-2</option>
+  		<option value="3">3-3</option>
+  		<option value="4" selected="selected">4-4</option>
+  	</select>
+  	<br />
+  	<input name="checkboxName" type="checkbox" value="1">1-1
+  	<input name="checkboxName" type="checkbox" value="2">2-2
+  	<input name="checkboxName" type="checkbox" value="3">3-3
+  	<input name="checkboxName" type="checkbox" value="4">4-4
+  	<br />
+  	<input type="radio" value="1" checked="checked" name="radioName">1-1
+  	<input type="radio" value="2" name="radioName">1-2
+  	<input type="radio" value="3" name="radioName">1-3
+  	<input type="radio" value="4" name="radioName">1-4
+  </body>
+</html>

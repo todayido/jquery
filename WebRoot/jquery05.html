@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery 创建节点</title>
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script>
+	
+    	function showText(_this){
+    		alert($(_this).text());
+    	}
+    	$(function(){//==window.onload=function(){}
+    	
+    		$("#game li").click(function(){
+    			showText(this);
+    		});
+    	
+    		$(":submit").click(function(){
+        		var $radio = $("input[name='type']:checked");
+        		if($radio.length==0){
+        			alert("请选择");
+        			return false;
+        		}
+        		var val = $radio.val();
+        		var $text = $("input[name='game']");
+        		var text = $.trim($text.val());
+        		if(text==""){
+        			alert("请输入游戏名！");
+        			return false;
+        		}
+        		
+        		$("<li>"+text+"</li>").appendTo($("#game"))
+        							 .click(function(){
+        								 showText(this);
+        							 });
+        		
+    		});
+    	});
+    </script>
+  </head>
+  <body>
+	  	<ul id="game">
+	  		<li>极品飞车</li>
+	  	</ul>
+	  	<input name="type" type="radio" value="1">1
+	  	<input name="type" type="radio" value="2">2
+	  	<input name="type" type="radio" value="3">3
+	  	<input name="type" type="radio" value="4">4
+	  	<input type="text" name="game"/>
+	  	<input type="submit" value="Submit"/>
+  </body>
+</html>
